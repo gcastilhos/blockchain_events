@@ -1,0 +1,110 @@
+/**
+ * Table-like DIVs
+ */
+
+div {
+    font-size: 8pt;
+    font-family: Arial, Helvetica, Sans-serif;
+}
+
+div.table {
+    display: table;
+    padding: 50px;
+    table-layout: fixed;
+}
+
+div.head {
+    display: table-header-group;
+}
+
+div.head div.cell.header {
+    font-weight: bold;
+    width: 5%;
+    word-wrap: break-word; 
+    border-bottom: 1px black solid;
+}
+
+div.row {
+    display: table-row;
+}
+
+div.cell {
+    display: table-cell;
+    padding: 5px 10px;
+}
+
+div.dark_blue {
+    background-color: #038cfc;
+}
+
+div.cell.record.original {
+    width: 600px;
+    white-space: nowrap;
+}
+
+div.cell.separator {
+    width:75px;
+}
+
+/**
+ * Hash specific styles
+ */
+
+div.text.hash {
+    font-family: "Lucida Console", Monaco, Courier, monospace;
+    background-color: lightGrey;
+    border: 1px black solid;
+    padding: 2px;
+    text-align: center;
+}
+
+div.final_hash {
+    background-color: lightBlue;
+    padding: 0;
+    text-align: center;
+}
+
+div.final_hash div.row.yellow div.cell {
+    padding: 10px;
+}
+
+div.note {
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    border: 1px black solid;
+    padding: 2px;
+    background-color: white;
+}
+
+/**
+ * Generic styles
+ */
+
+.big_font {
+    font-size: 24pt;
+    font-family: Arial, Helvetica, Sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.red {
+    color: red;
+}
+
+.light_blue {
+    background-color: lightBlue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.mono {
+    font-family: "Lucida Console", Monaco, Courier, monospace;
+}
+
+div.no_lateral_padding {
+    padding-right: 0;
+    padding-left: 0;
+}

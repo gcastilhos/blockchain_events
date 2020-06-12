@@ -1,0 +1,11 @@
+# Virtual Env
+.venv/
+
+# Node JS modules
+node_modules/
+
+# Vim sessions
+nodejs.vim
+
+# Data
+**/*.json

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="/css/main.css" rel="stylesheet">
+    </head>
+    <body class="light_blue">
+        <div id="app">
+            <div class="table">
+                <div class="head">
+                    <div class="cell header big_font black">
+                        <span>DAILY EVENT TABLE</span>
+                    </div>
+                    <div class="cell separator">
+                    </div>
+                    <div class="cell big_font red">
+                        <span>EVENT HASHING</span>
+                    </div>
+                </div>
+                 <div class="head">
+                    <div class="cell header dark_blue">
+                        <div v-for="item in header" class="cell">
+                            {{ item }}
+                        </div>
+                    </div>
+                    <div class="cell separator">
+                    </div>
+                    <div class="cell separator">
+                    </div>
+                </div>
+                <div v-for="record in records" class="row">
+                    <div class="cell record original dark_blue">
+                        <div v-for="(item, index) in record" class="cell text mono" v-html="padding(item, index)">
+                        </div>
+                    </div>
+                    <div class="cell separator">
+                    </div>
+                    <div class="cell record dark_blue">
+                        <div class="text hash">
+                            {{ record | recordAsString | encode }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell separator">
+                    </div>
+                    <div class="cell separator">
+                    </div>
+                    <div class="cell final_hash">
+                        <div class="row">
+                            <div class="cell no_lateral_padding">
+                                <div class="text light_blue note">
+                                    <span>Block HASH for each 100 events</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row yellow">
+                            <div class="cell">
+                                <div class="text hash">
+                                    {{ finalHash }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
