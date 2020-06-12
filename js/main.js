@@ -64,7 +64,7 @@
         },
         created: function() {
             setInterval(function() {
-                this.batch++;
+                this.batch = this.batch === 100 ? 1 : this.batch + 1;
                 this.getData(this.batch);
             }.bind(this), 5000);
         }
