@@ -64,9 +64,8 @@
         },
         created: function() {
             setInterval(function() {
-                this.getData(this.batch);
                 this.batch++;
-                console.log(this.batch);
+                this.getData(this.batch);
             }.bind(this), 5000);
         }
     });
