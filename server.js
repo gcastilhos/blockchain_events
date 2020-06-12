@@ -40,15 +40,15 @@
             fs.readFile(path.normalize(FILE_NAME), function(err, data) {
                 handleRequest(res, "text/html", err, data);
             });
-        } else if (req.url === MAIN_JS) {
+        } else if (req.url.includes(MAIN_JS)) {
             fs.readFile(path.normalize("." + MAIN_JS), function(err, data) {
                 handleRequest(res, "application/javascript", err, data);
             });
-        } else if (req.url === MAIN_CSS) {
+        } else if (req.url.includes(MAIN_CSS)) {
             fs.readFile(path.normalize("." + MAIN_CSS), function(err, data) {
                 handleRequest(res, "text/css", err, data);
             })
-        } else if (req.url.startsWith(DATA)) {
+        } else if (req.url.includes(DATA)) {
             console.log('Data path');
             var q = url.parse(req.url, true).query;
             var batch = q.batch !== undefined ? q.batch : 1;
