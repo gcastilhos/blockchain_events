@@ -49,11 +49,17 @@
                 handleRequest(res, "text/css", err, data);
             })
         } else if (req.url.includes(DATA)) {
-            console.log('Data path');
+            console.log('Data path: ' + req.url);
             var q = url.parse(req.url, true).query;
             var batch = q.batch !== undefined ? q.batch : 1;
             console.log('Batch #: ' + batch);
-            fs.readFile(path.normalize("./data/records_" + batch + ".json"), function(err, data) {
+            var fileName = ""
+            if (req.url.includes("/data/records_")) {
+                fileName = "./" + req.url;
+            } else {
+                fileName = "./data/records_" + batch + ".json";
+            }
+            fs.readFile(path.normalize(fileName), function(err, data) {
                 handleRequest(res, "application/json", err, data);
             });
         } else {

@@ -40,7 +40,7 @@
             },
             getData: function(batch) {
                 axios.
-                    get("./data?batch=" + batch ).
+                    get("./data/records_" + batch + ".json").
                     then(response => {
                         var data = response.data;
                         this.records.splice(data.data.length);
