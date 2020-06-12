@@ -9,7 +9,7 @@
                 var batch = sessionStorage.batch == undefined ? 0 : parseInt(sessionStorage.batch);
                 sessionStorage.batch = batch < 100 ? batch + 1 : 1;
                 setTimeout(function() {
-                    document.location = document.location.origin + "?batch=" + sessionStorage.batch;
+                    location = location.origin + location.pathname + "?batch=" + sessionStorage.batch;
                 }, timeout);
             };
          //-->
