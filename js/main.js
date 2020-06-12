@@ -57,10 +57,17 @@
                 });
                 this.finalHash = _encode(finalHash);
             },
-       },
+        },
         mounted: function() {
             this.batch = this.$route.query.batch !== undefined ? this.$route.query.batch : 1;
             this.getData(this.batch);
+        },
+        created: function() {
+            setInterval(function() {
+                this.getData(this.batch);
+                this.batch++;
+                console.log(this.batch);
+            }.bind(this), 5000);
         }
     });
 })()
