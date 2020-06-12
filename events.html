@@ -3,24 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <link href="./css/main.css" rel="stylesheet">
-        <script>
-         <!--
-            var autoRefresh = function(timeout) {
-                var batch = sessionStorage.batch == undefined ? 0 : parseInt(sessionStorage.batch);
-                sessionStorage.batch = batch < 100 ? batch + 1 : 1;
-                setTimeout(function() {
-                    location = location.origin + location.pathname + "?batch=" + sessionStorage.batch;
-                }, timeout);
-            };
-         //-->
-        </script>
     </head>
-    <body class="light_blue" onload="autoRefresh(5000);">
+    <body class="light_blue">
         <div id="app">
             <div class="table">
                 <div class="head">
                     <div class="cell header big_font black">
-                        <span>DAILY EVENT TABLE</span>
+                        <span>DAILY EVENT TABLE - BATCH {{ batch }}</span>
                     </div>
                     <div class="cell separator">
                     </div>
