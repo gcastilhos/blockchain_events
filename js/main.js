@@ -14,6 +14,10 @@
         routes: []
     });
 
+    Vue.component('cell-separator', {
+        template: '<div class="cell separator"></div>'
+    })
+
     var app = new Vue({
         router,
         el:'#app',

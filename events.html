@@ -11,8 +11,7 @@
                     <div class="cell header big_font black">
                         <span>DAILY EVENT TABLE - BATCH {{ batch }}</span>
                     </div>
-                    <div class="cell separator">
-                    </div>
+                    <cell-separator></cell-separator>
                     <div class="cell big_font red">
                         <span>EVENT HASHING</span>
                     </div>
@@ -23,18 +22,15 @@
                             {{ item }}
                         </div>
                     </div>
-                    <div class="cell separator">
-                    </div>
-                    <div class="cell separator">
-                    </div>
+                    <cell-separator></cell-separator>
+                    <cell-separator></cell-separator>
                 </div>
                 <div v-for="record in records" class="row">
                     <div class="cell record original dark_blue">
                         <div v-for="(item, index) in record" class="cell text mono" v-html="padding(item, index)">
                         </div>
                     </div>
-                    <div class="cell separator">
-                    </div>
+                    <cell-separator></cell-separator>
                     <div class="cell record dark_blue">
                         <div class="text hash">
                             {{ record | recordAsString | encode }}
@@ -42,10 +38,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="cell separator">
-                    </div>
-                    <div class="cell separator">
-                    </div>
+                    <cell-separator></cell-separator>
+                    <cell-separator></cell-separator>
                     <div class="cell final_hash">
                         <div class="row">
                             <div class="cell no_lateral_padding">
