@@ -14,6 +14,8 @@
     const MAIN_JS = "/js/main.js";
     const MAIN_CSS = "/css/main.css";
     const DATA = "/data";
+    const CATEGORIZATION = "/categorization";
+    const EVT_CATEG_FILE = "event_categorization.html";
 
     var noPageFound = function(res) {
         res.writeHead(404, {"Content-Type": "text/html", "charset": "UTF-8"});
@@ -40,7 +42,11 @@
             fs.readFile(path.normalize(FILE_NAME), function(err, data) {
                 handleRequest(res, "text/html", err, data);
             });
-        } else if (req.url.includes(MAIN_JS)) {
+        } else if (req.url == CATEGORIZATION) {
+            fs.readFile(path.normalize(EVT_CATEG_FILE), function(err, data) {
+                handleRequest(res, "text/html", err, data);
+            });
+         } else if (req.url.includes(MAIN_JS)) {
             fs.readFile(path.normalize("." + MAIN_JS), function(err, data) {
                 handleRequest(res, "application/javascript", err, data);
             });
