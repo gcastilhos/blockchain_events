@@ -9,6 +9,10 @@
         "test": "mocha"
     },
     "dependencies": {
+        "@babel/core": "^7.10.2",
+        "@babel/preset-env": "^7.10.2",
+        "babel": "^6.23.0",
+        "babel-cli": "^6.26.0",
         "mocha": "^8.0.1"
     }
 }

@@ -11,7 +11,7 @@
     var port = "8080";
     const ROOT = "/";
     const FILE_NAME = "events.html";
-    const MAIN_JS = "/js/main.js";
+    const JS_FILE = "/js/";
     const MAIN_CSS = "/css/main.css";
     const DATA = "/data";
     const CATEGORIZATION = "/categorization";
@@ -46,8 +46,8 @@
             fs.readFile(path.normalize(EVT_CATEG_FILE), function(err, data) {
                 handleRequest(res, "text/html", err, data);
             });
-         } else if (req.url.includes(MAIN_JS)) {
-            fs.readFile(path.normalize("." + MAIN_JS), function(err, data) {
+         } else if (req.url.includes(JS_FILE)) {
+            fs.readFile(path.normalize("." + req.url), function(err, data) {
                 handleRequest(res, "application/javascript", err, data);
             });
         } else if (req.url.includes(MAIN_CSS)) {
