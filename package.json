@@ -1,0 +1,14 @@
+{
+    "description": "Node JS Server for the Blockchain Event Application",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gcastilhos/blockchain_events.git"
+    },
+    "license": "GPL-3.0",
+    "scripts": {
+        "test": "mocha"
+    },
+    "dependencies": {
+        "mocha": "^8.0.1"
+    }
+}
