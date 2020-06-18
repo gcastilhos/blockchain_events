@@ -34,9 +34,9 @@ var methods = {
             then(response => {
                 var data = response.data;
                 this.records.splice(data.data.length);
-                data.data.forEach((rec, index) => this.$set(this.records, index, rec.slice(1)));
-                this.header.splice(data.columns.length - 1);
-                this.header = data.columns.slice(1);
+                data.data.forEach((rec, index) => this.$set(this.records, index, rec));
+                this.header.splice(data.columns.length);
+                this.header = data.columns;
                 this.encodeAll();
              });
     },
