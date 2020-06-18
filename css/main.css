@@ -47,11 +47,26 @@ div.cell.separator {
 }
 
 /**
+ *
+ */
+
+div#totals.table {
+    padding: 0;
+}
+
+div#totals.table .row .cell {
+    font-size: 12pt;
+}
+
+/**
  * Hash specific styles
  */
 
-div.text.hash {
+.text {
     font-family: "Lucida Console", Monaco, Courier, monospace;
+}
+
+div.text.hash {
     background-color: lightGrey;
     border: 1px black solid;
     padding: 2px;
@@ -88,8 +103,23 @@ div.note {
     text-align: center;
 }
 
+h5 {
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 5px 0;
+    text-align: center;
+}
+
 .red {
     color: red;
+}
+
+.grey {
+    background-color: #e8ebf5;
+}
+
+.border_lightBlue {
+    border: 1px solid lightBlue;
 }
 
 .light_blue {
@@ -100,8 +130,24 @@ div.note {
     background-color: yellow;
 }
 
+.header {
+    font-weight: bold;
+}
+
 .mono {
     font-family: "Lucida Console", Monaco, Courier, monospace;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.colspan {
+    column-span: all;
+}
+
+.red_border {
+    border: 1px red solid;
 }
 
 div.no_lateral_padding {
