@@ -104,6 +104,10 @@ div.note {
     font-family: "Lucida Console", Monaco, Courier, monospace;
 }
 
+.red_border {
+    border: 1px red solid;
+}
+
 div.no_lateral_padding {
     padding-right: 0;
     padding-left: 0;
