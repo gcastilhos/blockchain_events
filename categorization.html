@@ -7,63 +7,64 @@
     <body class="light_blue">
         <div id="app">
             <div class="table">
-                <div class="head">
-                    <div class="cell header big_font red">
-                        <h2>EVENT USE  CATEGORIZATION</h2>
-                        <h4>(Grouping and FILTERING as per USAGE.)</h4>
-                    </div>
-                    <cell-separator></cell-separator>
-                    <div class="cell big_font red">
-                        <span>CONSUMPTION CONSOLIDATION PER CATEGORY</span>
-                    </div>
-                </div>
-                 <div class="head">
-                    <div class="cell header dark_blue">
-                        <div v-for="item in header" class="cell">
-                            {{ item }}
-                        </div>
-                    </div>
-                    <cell-separator></cell-separator>
-                    <cell-separator></cell-separator>
-                </div>
-                <div v-for="record in records" class="row">
-                    <div class="cell record original dark_blue">
-                        <div class="red_border">
-                            <div v-for="(item, index) in record"
-                                 :style="{backgroundColor: eventColor(record[12])}"
-                                 :key='index' class="cell text mono" v-html="padding(item, index)">
-                            </div>
-                        </div>
-                    </div>
-                    <cell-separator></cell-separator>
-                    <div class="cell record dark_blue">
-                        <div class="text hash">
-                            {{ record | recordAsString | encode }}
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <cell-separator></cell-separator>
-                    <cell-separator></cell-separator>
-                    <div class="cell final_hash">
-                        <div class="row">
-                            <div class="cell no_lateral_padding">
-                                <div class="text light_blue note">
-                                    <span>Block HASH for each 100 events</span>
+                    <div class="cell">
+                        <div class="table">
+                            <div class="head">
+                                <div class="cell header big_font red">
+                                    <h2>EVENT USE  CATEGORIZATION</h2>
+                                    <h4>(Grouping and FILTERING as per USAGE.)</h4>
+                                </div>
+                            </div>
+                            <div class="head">
+                                <div class="cell header dark_blue">
+                                    <div v-for="item in header" class="cell">
+                                        {{ item }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-for="record in records" class="row">
+                                <div class="cell record original dark_blue">
+                                    <div class="red_border">
+                                        <div v-for="(item, index) in record"
+                                             :style="{backgroundColor: eventColor(record[12])}"
+                                             :key='index' class="cell text mono" v-html="padding(item, index)">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row yellow">
-                            <div class="cell">
-                                <div class="text hash">
-                                    {{ finalHash }}
+                    </div>
+                    <div class="cell">
+                        <div class="table" id="totals">
+                            <div class="head">
+                                <div class="cell big_font red">
+                                    <h4>CONSUMPTION CONSOLIDATION PER CATEGORY</h4>
+                                </div>
+                            </div>
+                            <div class="head">
+                                <div class="cell"><h5 v-html="eventNumbers[0]"></h5></div>
+                            </div>
+                            <div class="head">
+                                <div class="cell"><h5 v-html="eventNumbers[1]">/h5></div>
+                            </div>
+                        </div>
+                        <div class="table" id="totals">
+                            <div v-for="(total, rowIndex) in totals" class="row">
+                                <div v-for="(item, index) in total"
+                                     :key='index'
+                                     class="cell text mono grey border_lightBlue"
+                                     :class="{header: rowIndex == 0}"
+                                     :style="{textAlign: rowIndex == 0 ? 'center' : 'left'}">
+                                    <span v-if="rowIndex == 0" v-html="item"></span>
+                                    <span v-else>{{ item }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-             </div>
-        </div>
+            </div>
+         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/vue-router/dist/vue-router.js" type="module"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

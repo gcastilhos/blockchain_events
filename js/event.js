@@ -13,7 +13,10 @@ var app = new Vue({
     el:'#app',
     data: {
         records: [],
+        totals: [],
         header: [],
+        eventNumbers: [],
+        categoryHeader: ['Use Category', 'Name&nbsp;of&nbsp;the&nbsp;Category', 'TOTAL in&nbsp;KWH'],
         finalHash: '',
         batch: 1,
         padSize: [11, 9, 4, 10, 15, 10, 5, 6, 6, 5, 5, 10, 15, 35]

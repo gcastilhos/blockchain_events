@@ -40,7 +40,22 @@ var methods = {
                 this.encodeAll();
              });
     },
-    encodeAll: function() {
+    getTotals: function(batch) {
+        axios.
+            get("./data/power_composition_" + batch + ".json").
+            then(response => {
+                var data = response.data;
+                this.totals.splice(data.data.length);
+                data.data.forEach((rec, index) => this.$set(this.totals, index, rec));
+                this.totals.splice(0, 0, this.categoryHeader);
+             });
+        axios.
+            get("./data/event_numbers_" + batch + ".json").
+            then(response => {
+                response.data.forEach((rec, index) => this.$set(this.eventNumbers, index, rec));
+             });
+   },
+     encodeAll: function() {
         var finalHash = '';
         this.records.forEach((rec) => {
             finalHash += encode(rec);

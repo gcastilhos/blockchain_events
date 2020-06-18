@@ -3,6 +3,7 @@
 import logging
 from functools import partial
 import os
+import json
 import pandas as pd
 
 
@@ -32,17 +33,25 @@ def power_composition_groups(data):
     grouped.reset_index(inplace=True)
     category_name = partial(get_category_name, data)
     grouped['CategoryName'] = grouped.UseCategory.map(category_name)
-    return grouped
+    return grouped[['UseCategory', 'CategoryName', 'PowerComposition']]
 
 
 def save_to_json(data, index):
     data.to_json(f"power_composition_{index}.json", index=False, orient="split")
 
 
+def save_event_numbers(data, index):
+    numbers = [f'Initial&nbsp;Event&nbsp;Number: {data.Event_Id.min()}',
+               f'Last&nbsp;Event&nbsp;Number: {data.Event_Id.max()}']
+    json.dump(numbers, open(f"event_numbers_{index}.json", "w"))
+
+
 def calculate_total(data, index):
     rename_columns(data)
     replace_null_categories(data)
-    save_to_json(power_composition_groups(data), index)
+    power_composition = power_composition_groups(data)
+    save_event_numbers(data, index)
+    save_to_json(power_composition, index)
 
 
 def create_record_groups(data):
