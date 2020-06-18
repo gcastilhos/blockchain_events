@@ -53,10 +53,8 @@
                             <div v-for="(total, rowIndex) in totals" class="row">
                                 <div v-for="(item, index) in total"
                                      :key='index'
-                                     class="cell text mono grey border_lightBlue"
-                                     :class="{header: rowIndex == 0}"
-                                     :style="{textAlign: rowIndex == 0 ? 'center' : 'left'}">
-                                    <span v-if="rowIndex == 0" v-html="item"></span>
+                                     class="cell text mono grey border_lightBlue">
+                                    <span v-if="rowIndex == 0" style="text-align: center;" class="header" v-html="item"></span>
                                     <span v-else>{{ item }}</span>
                                 </div>
                             </div>
