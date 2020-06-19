@@ -9,6 +9,7 @@ nodejs.vim
 
 # Data
 **/*.json
+**/*.csv
 
 #JS files
 server.js

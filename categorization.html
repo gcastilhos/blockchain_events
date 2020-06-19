@@ -9,56 +9,45 @@
             <div class="table">
                 <div class="row">
                     <div class="cell">
-                        <div class="table">
-                            <div class="head">
-                                <div class="cell header big_font red">
-                                    <h2>EVENT USE  CATEGORIZATION</h2>
-                                    <h4>(Grouping and FILTERING as per USAGE.)</h4>
-                                </div>
-                            </div>
-                            <div class="head">
-                                <div class="cell header dark_blue">
-                                    <div v-for="item in header" class="cell">
-                                        {{ item }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div v-for="record in records" class="row">
-                                <div class="cell record original dark_blue">
-                                    <div class="red_border">
-                                        <div v-for="(item, index) in record"
-                                             :style="{backgroundColor: eventColor(record[13])}"
-                                             :key='index' class="cell text mono" v-html="padding(item, index)">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <table-header v-bind:title-h2="'EVENT USE  CATEGORIZATION'"
+                                      v-bind:title-h4="'(Grouping and FILTERING as per USAGE.)'">
+                        </table-header>
                     </div>
                     <div class="cell">
-                        <div class="table" id="totals">
-                            <div class="head">
-                                <div class="cell big_font red">
-                                    <h4>CONSUMPTION CONSOLIDATION PER CATEGORY</h4>
-                                </div>
-                            </div>
-                            <div class="head">
-                                <div class="cell"><h5 v-html="eventNumbers[0]"></h5></div>
-                            </div>
-                            <div class="head">
-                                <div class="cell"><h5 v-html="eventNumbers[1]">/h5></div>
-                            </div>
-                        </div>
-                        <div class="table" id="totals">
-                            <div v-for="(total, rowIndex) in totals" class="row">
-                                <div v-for="(item, index) in total"
+                        <table-header v-bind:title-h4="'CONSUMPTION CONSOLIDATION PER CATEGORY'"></table-header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell dark_blue">
+                        <table class="categ">
+                            <tr v-for="(record, rowIndex) in records"
+                                :key="rowIndex"
+                                :class="{red_line: rowIndex > 0}">
+                                <th v-if="rowIndex == 0"
+                                    v-for="(item, index) in record"
+                                    v-html="item"
+                                    :style="{textAlign: textAlignment[index] == 0 ? 'left' : 'right'}"></th>
+                                <td v-if="rowIndex > 0" v-for="(item, index) in record"
+                                    :style="{backgroundColor: eventColor(record[13]), textAlign: textAlignment[index] == 0 ? 'left' : 'right'}"
+                                    :key='index'
+                                    v-html="item">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="cell">
+                        <event-number v-bind:event-number-text="eventNumbers[0]"></event-number>
+                        <event-number v-bind:event-number-text="eventNumbers[1]"></event-number>
+                        <table id="totals" class="totals">
+                            <tr v-for="(total, rowIndex) in totals" :key="rowIndex">
+                                <th v-if="rowIndex == 0" v-for="(item, index) in total" v-html="item" class="grey header"></th>
+                                <td v-if="rowIndex > 0" v-for="(item, index) in total"
                                      :key='index'
-                                     class="cell text mono grey border_lightBlue">
-                                    <span v-if="rowIndex == 0" style="text-align: center;" class="header" v-html="item"></span>
-                                    <span v-else>{{ item }}</span>
-                                </div>
-                            </div>
-                        </div>
+                                     class="grey border_lightBlue">
+                                     {{ item }}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

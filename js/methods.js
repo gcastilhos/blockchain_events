@@ -20,14 +20,6 @@ var categoryColors = {
 };
 
 var methods = {
-
-   padding: function(value, index) {
-        var text = value;
-        for (var i = 0; i < this.padSize[index] - value.toString().length; ++i) {
-            text = "&nbsp;" + text;
-        }
-        return text;
-    },
     getData: function(batch) {
         axios.
             get("./data/events_" + batch + ".json").
@@ -37,7 +29,7 @@ var methods = {
                 data.data.forEach((rec, index) => this.$set(this.records, index, rec));
                 this.header.splice(data.columns.length);
                 this.header = data.columns;
-                this.encodeAll();
+                this.records.splice(0, 0, data.columns);
              });
     },
     getTotals: function(batch) {
@@ -54,13 +46,6 @@ var methods = {
             then(response => {
                 response.data.forEach((rec, index) => this.$set(this.eventNumbers, index, rec));
              });
-   },
-     encodeAll: function() {
-        var finalHash = '';
-        this.records.forEach((rec) => {
-            finalHash += encode(rec);
-        });
-        this.finalHash = encode(finalHash);
     },
     eventColor: function(category) {
         return categoryColors[category];
