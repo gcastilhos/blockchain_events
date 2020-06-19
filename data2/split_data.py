@@ -41,8 +41,8 @@ def save_to_json(data, index):
 
 
 def save_event_numbers(data, index):
-    numbers = [f'Initial&nbsp;Event&nbsp;Number: {data.Event_Id.min()}',
-               f'Last&nbsp;Event&nbsp;Number: {data.Event_Id.max()}']
+    numbers = [f'Initial&nbsp;Event&nbsp;Number:&nbsp;{data.Event_Id.min()}',
+               f'Last&nbsp;Event&nbsp;Number:&nbsp;&nbsp;&nbsp;{data.Event_Id.max()}']
     json.dump(numbers, open(f"event_numbers_{index}.json", "w"))
 
 
@@ -56,10 +56,7 @@ def calculate_total(data, index):
 
 def create_record_groups(data):
     data.loc[data['USE CATEG'].isnull(), ['USE CATEG', 'CATEGORY NAME (Literal)']] = ('UNDETM', 'UNDETM')
-<<<<<<< Updated upstream
-=======
     data['CATEGORY NAME (Literal)'] = data['CATEGORY NAME (Literal)'].apply(lambda val: val.strip())
->>>>>>> Stashed changes
     for counter in range(0, data.shape[0], 100):
         data_slice = data.iloc[slice(counter, counter + 100)]
         index = int(counter / 100) + 1

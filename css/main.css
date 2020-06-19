@@ -37,7 +37,7 @@ div.cell {
     padding: 5px 10px;
 }
 
-div.dark_blue {
+.dark_blue {
     background-color: #038cfc;
 }
 
@@ -107,6 +107,12 @@ div.note {
     text-align: center;
 }
 
+h4.big_font {
+    font-size: 18pt;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
 h5 {
     font-size: 16pt;
     font-weight: bold;
@@ -142,6 +148,10 @@ h5 {
     font-family: "Lucida Console", Monaco, Courier, monospace;
 }
 
+.no_space_break {
+    white-space: nowrap;
+}
+
 .text_left {
     text-align: left;
 }
@@ -173,4 +183,35 @@ h5 {
 div.no_lateral_padding {
     padding-right: 0;
     padding-left: 0;
+}
+
+/**
+ * Events categorization
+ */
+
+table.categ, table.totals {
+    border-collapse: separate;
+}
+
+table.categ {
+    border-spacing: 0px 7px;
+}
+
+table.totals {
+    border-spacing: 5px;
+}
+
+table.categ td, table.totals td, table.categ th {
+    padding: 5px;
+    white-space: nowrap;
+}
+
+table.categ tr.red_line {
+    outline-width: 2px;
+    outline-color: red;
+    outline-style: outset;
+}
+
+table.totals th {
+    padding: 5px;
 }

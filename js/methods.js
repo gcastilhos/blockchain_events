@@ -20,14 +20,6 @@ var categoryColors = {
 };
 
 var methods = {
-
-   padding: function(value, index) {
-        var text = value;
-        for (var i = 0; i < this.padSize[index] - value.toString().length; ++i) {
-            text = "&nbsp;" + text;
-        }
-        return text;
-    },
     getData: function(batch) {
         axios.
             get("./data/events_" + batch + ".json").

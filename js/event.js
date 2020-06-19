@@ -16,9 +16,9 @@ var app = new Vue({
         totals: [],
         header: [],
         eventNumbers: [],
-        categoryHeader: ['Use Category', 'Name&nbsp;of&nbsp;the&nbsp;Category', 'TOTAL in&nbsp;KWH'],
+        categoryHeader: ['Use<br />Category', 'Name&nbsp;of&nbsp;the&nbsp;Category', 'TOTAL<br />in&nbsp;KWH'],
         batch: 1,
-        padSize: [8, 10, 8, 12, 8, 12, 23, 23, 8, 20, 15, 15, 20, 10, 35]
+        textAlignment: [1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0]
     },
     filters: {
         encode: _encode,
