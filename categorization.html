@@ -10,16 +10,12 @@
                 <div class="row">
                     <div class="cell">
                         <div class="table">
-                            <div class="head">
-                                <div class="cell header big_font red">
-                                    <h2>EVENT USE  CATEGORIZATION</h2>
-                                    <h4>(Grouping and FILTERING as per USAGE.)</h4>
-                                </div>
-                            </div>
+                            <table-header v-bind:title-h2="'EVENT USE  CATEGORIZATION'"
+                                          v-bind:title-h4="'(Grouping and FILTERING as per USAGE.)'">
+                            </table-header>
                             <div class="head">
                                 <div class="cell header dark_blue">
-                                    <div v-for="item in header" class="cell">
-                                        {{ item }}
+                                    <div v-for="(item, index) in header" class="cell mono" v-html="padding(item, index)">
                                     </div>
                                 </div>
                             </div>
@@ -37,11 +33,7 @@
                     </div>
                     <div class="cell">
                         <div class="table" id="totals">
-                            <div class="head">
-                                <div class="cell big_font red">
-                                    <h4>CONSUMPTION CONSOLIDATION PER CATEGORY</h4>
-                                </div>
-                            </div>
+                            <table-header v-bind:title-h4="'CONSUMPTION CONSOLIDATION PER CATEGORY'"></table-header>
                             <div class="head">
                                 <div class="cell"><h5 v-html="eventNumbers[0]"></h5></div>
                             </div>

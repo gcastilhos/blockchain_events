@@ -1,7 +1,6 @@
 "use strict";
 
 var mounted = function() {
-    this.batch = this.$route.query.batch !== undefined ? this.$route.query.batch : 1;
     this.getData(this.batch);
     this.getTotals(this.batch);
 };

@@ -34,10 +34,10 @@ var methods = {
             then(response => {
                 var data = response.data;
                 this.records.splice(data.data.length);
-                data.data.forEach((rec, index) => this.$set(this.records, index, rec.slice(1)));
-                this.header.splice(data.columns.length - 1);
-                this.header = data.columns.slice(1);
-                this.encodeAll();
+                data.data.forEach((rec, index) => this.$set(this.records, index, rec));
+                this.header.splice(data.columns.length);
+                this.header = data.columns;
+                this.records.splice(0, 0, data.columns);
              });
     },
     getTotals: function(batch) {
@@ -54,13 +54,6 @@ var methods = {
             then(response => {
                 response.data.forEach((rec, index) => this.$set(this.eventNumbers, index, rec));
              });
-   },
-     encodeAll: function() {
-        var finalHash = '';
-        this.records.forEach((rec) => {
-            finalHash += encode(rec);
-        });
-        this.finalHash = encode(finalHash);
     },
     eventColor: function(category) {
         return categoryColors[category];
