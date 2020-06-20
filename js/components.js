@@ -11,8 +11,8 @@ var cellSeparator = Vue.component('cell-separator', {
 
 var tableHeader = Vue.component('table-header', {
     template: '<div class="red">' +
-              '  <h2 class="big_font" v-if="titleH2 != undefined">{{ titleH2 }}</h2>' +
-              '  <h4 class="big_font" v-if="titleH4 != undefined">{{ titleH4 }}</h4>' +
+              '  <h2 class="big_font" v-if="titleH2 != undefined" v-html="titleH2"></h2>' +
+              '  <h4 class="big_font" v-if="titleH4 != undefined" v-html="titleH4"></h4>' +
               '</div>',
     props: ['titleH2', 'titleH4']
 });

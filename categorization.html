@@ -9,26 +9,27 @@
             <div class="table">
                 <div class="row">
                     <div class="cell">
-                        <table-header v-bind:title-h2="'EVENT USE  CATEGORIZATION'"
-                                      v-bind:title-h4="'(Grouping and FILTERING as per USAGE.)'">
+                        <table-header v-bind:title-h2="titleEvents"
+                                      v-bind:title-h4="subTitleEvents">
                         </table-header>
                     </div>
                     <div class="cell">
-                        <table-header v-bind:title-h4="'CONSUMPTION CONSOLIDATION PER CATEGORY'"></table-header>
+                        <table-header v-bind:title-h4="titleTotals"></table-header>
                     </div>
                 </div>
                 <div class="row">
                     <div class="cell dark_blue">
                         <table class="categ">
                             <tr v-for="(record, rowIndex) in records"
-                                :key="rowIndex"
+                                :key="'event_' + rowIndex"
                                 :class="{red_line: rowIndex > 0}">
                                 <th v-if="rowIndex == 0"
                                     v-for="(item, index) in record"
                                     v-html="item"
-                                    :style="{textAlign: textAlignment[index] == 0 ? 'left' : 'right'}"></th>
-                                <td v-if="rowIndex > 0" v-for="(item, index) in record"
-                                    :style="{backgroundColor: eventColor(record[13]), textAlign: textAlignment[index] == 0 ? 'left' : 'right'}"
+                                    :style="{textAlign: align(index)}"></th>
+                                <td v-if="rowIndex > 0"
+                                    v-for="(item, index) in record"
+                                    :style="{backgroundColor: eventColor(record[13]), textAlign: align(index)}"
                                     :key='index'
                                     v-html="item">
                                 </td>
@@ -40,24 +41,29 @@
                         <event-number v-bind:event-number-text="eventNumbers[1]"></event-number>
                         <table id="totals" class="totals">
                             <tr v-for="(total, rowIndex) in totals" :key="rowIndex">
-                                <th v-if="rowIndex == 0" v-for="(item, index) in total" v-html="item" class="grey header"></th>
-                                <td v-if="rowIndex > 0" v-for="(item, index) in total"
-                                     :key='index'
-                                     class="grey border_lightBlue">
-                                     {{ item }}
+                                <th v-if="rowIndex == 0"
+                                    v-for="(item, index) in total"
+                                    v-html="item"
+                                    class="grey header"></th>
+                                <td v-if="rowIndex > 0"
+                                    v-for="(item, index) in total"
+                                    :key="'total_' + index"
+                                    class="grey border_lightBlue">
+                                    {{ item }}
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/vue-router/dist/vue-router.js" type="module"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
         <script src="./js/components.js"></script>
         <script src="./js/methods.js" type="module"></script>
+        <script src="./js/filters.js" type="module"></script>
         <script src="./js/app_events.js" type="module"></script>
         <script src="./js/event.js" type="module"></script>
     </body>

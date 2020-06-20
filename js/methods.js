@@ -1,12 +1,5 @@
 "use strict";
 
-var encode = (text) => {
-    if (text !== '') {
-        return sha256(text);
-    }
-    return text;
-};
-
 var categoryColors = {
     'A': 'white',
     'B': 'cyan',
@@ -49,7 +42,10 @@ var methods = {
     },
     eventColor: function(category) {
         return categoryColors[category];
+    },
+    align: function(index) {
+        return this.textAlignment[index] == 0 ? 'left' : 'right';
     }
-};
+ };
 
-export {encode as _encode, methods as _methods}; 
+export {methods as _methods}; 
